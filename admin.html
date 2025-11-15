@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin — RailwayX</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="topnav">
+    <div class="brand">Railway<span class="accent">X</span></div>
+    <nav>
+      <a href="index.html">Search</a>
+      <a href="profile.html" id="nav-profile">Profile</a>
+      <a href="admin.html">Admin</a>
+      <a href="login.html" id="nav-login">Login</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Admin Dashboard</h2>
+
+      <form id="addTrainForm" class="stack mt-4">
+        <h3>Add Train</h3>
+        <label>Number</label><input id="trainNumber" />
+        <label>Name</label><input id="trainName" />
+        <label>Route (comma-separated station codes)</label><input id="trainRoute" placeholder="NDLS,LKO,BCT" />
+        <label>Classes (comma-separated)</label><input id="trainClasses" placeholder="1A,2A,3A" />
+        <div><button class="btn primary" type="submit">Add Train</button></div>
+        <p id="addTrainMsg" class="msg"></p>
+      </form>
+
+      <hr class="mt-8 mb-8">
+
+      <h3>Bookings</h3>
+      <div id="adminBookings"></div>
+    </section>
+  </main>
+
+  <footer class="footer"><small>RailwayX — demo frontend</small></footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

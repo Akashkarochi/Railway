@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Railway Reservation — Home</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="topnav">
+    <div class="brand">Railway<span class="accent">X</span></div>
+    <nav>
+      <a href="index.html">Search</a>
+      <a href="profile.html" id="nav-profile">Profile</a>
+      <a href="admin.html">Admin</a>
+      <a href="login.html" id="nav-login">Login</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero card">
+      <h1 class="title">Search Trains</h1>
+      <form id="searchForm" class="grid-4">
+        <div>
+          <label>From (station code)</label>
+          <input id="fromInput" value="NDLS" />
+        </div>
+        <div>
+          <label>To (station code)</label>
+          <input id="toInput" value="BCT" />
+        </div>
+        <div>
+          <label>Date</label>
+          <input id="dateInput" type="date" />
+        </div>
+        <div class="align-end">
+          <button type="submit" class="btn primary">Search</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card mt-16" id="quickTips">
+      <h2>Quick Tips</h2>
+      <div class="tips-row">
+        <div class="tip">Use Login page for OTP/password (mocked).</div>
+        <div class="tip">Admin → add trains & manage bookings (mock).</div>
+        <div class="tip">Animations & transitions are pure CSS + small JS.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>RailwayX — demo frontend (localStorage mock)</small>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script>document.getElementById('dateInput').value = new Date().toISOString().slice(0,10);</script>
+</body>
+</html>

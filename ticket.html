@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ticket — RailwayX</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- QR library CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+  <header class="topnav">
+    <div class="brand">Railway<span class="accent">X</span></div>
+    <nav>
+      <a href="index.html">Search</a>
+      <a href="profile.html" id="nav-profile">Profile</a>
+      <a href="admin.html">Admin</a>
+      <a href="login.html" id="nav-login">Login</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card" id="ticketCard">
+      <!-- filled by JS -->
+    </section>
+  </main>
+
+  <footer class="footer"><small>RailwayX — demo frontend</small></footer>
+
+  <script src="js/app.js"></script>
+  <script>
+    (function(){
+      const url = new URL(location.href);
+      const pnr = url.searchParams.get('pnr');
+      const booking = appApi.getBookingByPNR(pnr);
+      const root = document.getElementById('ticketCard');
+      if(!booking){ root.innerHTML = '<p>Booking not found</p>'; return; }
+
+      root.innerHTML = `
+        <div class="row space-between">
+          <div>
+            <h2>PNR: ${booking.pnr}</h2>
+            <div class="muted">Status: <strong>${booking.status}</strong></div>
+          </div>
+          <div id="qrcode"></div>
+        </div>
+
+        <hr class="mt-8 mb-8">
+
+        <div class="grid-2">
+          <div class="pblock">
+            <h4>Train</h4>
+            <div>Train ID: ${booking.trainId}</div>
+            <div>From: ${booking.from} → To: ${booking.to}</div>
+            <div>Class: ${booking.classCode}</div>
+          </div>
+
+          <div class="pblock">
+            <h4>Passengers</h4>
+            ${booking.passengers.map((p,i)=>`<div>${p.name} — Age ${p.age} — Seat ${booking.assignedSeats[i].seat}</div>`).join('')}
+          </div>
+        </div>
+
+        <div class="mt-8">
+          <button id="cancelBtn" class="btn ghost">Cancel Booking</button>
+          <button id="printBtn" class="btn small">Print</button>
+        </div>
+      `;
+
+      // create QR
+      new QRCode(document.getElementById('qrcode'), { text: booking.pnr, width:120, height:120 });
+
+      document.getElementById('cancelBtn').addEventListener('click', ()=>{
+        if(confirm('Are you sure you want to cancel?')){ appApi.cancelBooking(booking.pnr); alert('Cancelled (mock).'); location.reload(); }
+      });
+      document.getElementById('printBtn').addEventListener('click', ()=> window.print());
+    })();
+  </script>
+</body>
+</html>

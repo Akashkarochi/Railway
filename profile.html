@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Profile — RailwayX</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="topnav">
+    <div class="brand">Railway<span class="accent">X</span></div>
+    <nav>
+      <a href="index.html">Search</a>
+      <a href="profile.html" id="nav-profile">Profile</a>
+      <a href="admin.html">Admin</a>
+      <a href="login.html" id="nav-login">Login</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2 id="profileName">Profile</h2>
+      <div id="bookingHistory" class="mt-6"></div>
+    </section>
+  </main>
+
+  <footer class="footer"><small>RailwayX — demo frontend</small></footer>
+
+  <script src="js/app.js"></script>
+  <script>
+    (function(){
+      const user = appApi.getCurrentUser();
+      if(!user){ alert('Please login (mock).'); location.href='login.html'; return; }
+      document.getElementById('profileName').textContent = user.name + ' — Profile';
+      const bookings = appApi.getUserBookings(user.id);
+      const root = document.getElementById('bookingHistory');
+      if(!bookings.length){ root.innerHTML = '<p>No bookings yet.</p>'; return; }
+      root.innerHTML = bookings.map(b => `
+        <div class="booking-row card-mini">
+          <div><strong>${b.pnr}</strong> — ${b.trainId} — ${b.date} — <small>${b.status}</small></div>
+          <div><a href="ticket.html?pnr=${b.pnr}" class="btn small">View</a></div>
+        </div>
+      `).join('');
+    })();
+  </script>
+</body>
+</html>

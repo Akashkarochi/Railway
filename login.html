@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login — RailwayX</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="topnav">
+    <div class="brand">Railway<span class="accent">X</span></div>
+    <nav>
+      <a href="index.html">Search</a>
+      <a href="profile.html" id="nav-profile">Profile</a>
+      <a href="admin.html">Admin</a>
+      <a href="login.html" id="nav-login">Login</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card auth-card">
+      <div class="auth-tabs">
+        <button id="tab-login" class="tab active">Login</button>
+        <button id="tab-signup" class="tab">Signup</button>
+        <button id="tab-otp" class="tab">OTP Login</button>
+      </div>
+
+      <div class="auth-body">
+        <!-- Login -->
+        <form id="loginForm" class="auth-form">
+          <label>Email or Phone</label>
+          <input id="loginId" placeholder="email or phone" />
+          <label>Password</label>
+          <input id="loginPassword" type="password" />
+          <div class="row">
+            <button class="btn primary" type="submit">Login</button>
+            <button id="demoLogin" class="btn ghost" type="button">Demo Login</button>
+          </div>
+          <p id="loginMsg" class="msg"></p>
+        </form>
+
+        <!-- Signup -->
+        <form id="signupForm" class="auth-form hidden">
+          <label>Name</label>
+          <input id="signupName" />
+          <label>Email</label>
+          <input id="signupEmail" />
+          <label>Phone</label>
+          <input id="signupPhone" />
+          <label>Password</label>
+          <input id="signupPassword" type="password" />
+          <div class="row">
+            <button class="btn primary" type="submit">Create Account</button>
+          </div>
+          <p id="signupMsg" class="msg"></p>
+        </form>
+
+        <!-- OTP -->
+        <form id="otpForm" class="auth-form hidden">
+          <label>Phone</label>
+          <input id="otpPhone" placeholder="10 digit phone" />
+          <div class="row">
+            <button class="btn primary" id="sendOtp" type="button">Send OTP (mock)</button>
+          </div>
+          <div id="otpSection" class="hidden mt-6">
+            <label>Enter OTP</label>
+            <input id="otpInput" placeholder="Enter 4-digit OTP (1234)" />
+            <div class="row">
+              <button class="btn primary" id="verifyOtp" type="button">Verify & Login</button>
+            </div>
+          </div>
+          <p id="otpMsg" class="msg"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <small>RailwayX — demo frontend</small>
+  </footer>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>
