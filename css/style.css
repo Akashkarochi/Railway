@@ -1,0 +1,49 @@
+:root{
+  --bg:#f6f7fb; --card:#ffffff; --muted:#6b7280; --accent:blue;
+}
+*{box-sizing:border-box}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial; margin:0; background:var(--bg); color:#111}
+.topnav{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:#fff;box-shadow:0 1px 8px rgba(16,24,40,0.04);position:sticky;top:0;z-index:30}
+.brand{font-weight:700;font-size:18px}
+.brand .accent{color:var(--accent)}
+.topnav nav a{margin-left:14px;color:var(--muted);text-decoration:none}
+.container{max-width:1100px;margin:28px auto;padding:0 16px}
+.card{background:var(--card);padding:18px;border-radius:12px;box-shadow:0 6px 20px rgba(12,18,32,0.04)}
+.mt-16{margin-top:64px}
+.title{font-size:20px;margin:0}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stack{display:flex;flex-direction:column;gap:10px}
+.input, input, select, textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e5e7eb;background:white}
+.btn{padding:8px 12px;border-radius:8px;border:0;cursor:pointer}
+.btn.primary{background:var(--accent);color:#fff}
+.btn.ghost{background:#f3f4f6;color:#111;border:1px solid #e6e9ef}
+.btn.small{padding:6px 8px;font-size:13px}
+.align-end{display:flex;align-items:end}
+.tips-row{display:flex;gap:12px}
+.tip{flex:1;padding:12px;border-radius:8px;background:#fff;box-shadow:0 2px 8px rgba(15,23,42,0.04)}
+.auth-card{max-width:720px;margin:36px auto;padding:0}
+.auth-tabs{display:flex;border-bottom:1px solid #eef2ff}
+.tab{padding:12px 16px;background:transparent;border:0;cursor:pointer}
+.tab.active{border-bottom:3px solid var(--accent);font-weight:600}
+.auth-body{padding:18px}
+.hidden{display:none}
+.msg{color:#ef4444;margin-top:6px}
+.row{display:flex;gap:12px;align-items:center}
+.space-between{display:flex;justify-content:space-between;align-items:center}
+.train-grid{display:flex;flex-direction:column;gap:10px}
+.train-card{display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:8px;background:linear-gradient(180deg,#fff,#fbfdff);box-shadow:0 4px 12px rgba(14,20,40,0.04);transition:transform .18s}
+.train-card:hover{transform:translateY(-6px)}
+.train-num{font-weight:700}
+.muted{color:var(--muted);font-size:13px}
+.seat-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:6px}
+.seat{padding:6px;border-radius:6px;text-align:center;font-size:12px;border:1px solid #eef2ff}
+.seat.booked{background:#f3f4f6;color:#9ca3af}
+.seat.available{background:#fff}
+.seat-num{font-weight:600}
+.seat-berth{font-size:11px;color:var(--muted)}
+.pblock{padding:12px;border-radius:8px;background:#fbfdff}
+.card-mini{padding:10px;border-radius:8px;background:#fff;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.footer{text-align:center;padding:18px;color:var(--muted);font-size:13px;margin-top:32px}
+.booking-row{display:flex;justify-content:space-between;align-items:center}
+@media (max-width:900px){ .grid-4{grid-template-columns:1fr} .seat-grid{grid-template-columns:repeat(5,1fr)} .grid-2{grid-template-columns:1fr} }
